@@ -9,10 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ extended: true }));
 app.use(cors());
 
-app.post("/", (req, res) => {
+app.post("/", (req, res, next) => {
     const { inputValue } = req.body;
-    console.log(inputValue)
-    res.json({ inputValue });
+    console.log(`El dato recibido es: ${inputValue}`)
+    next();
 });
 
 app.listen(PORT, () => console.log(`Server on port: ${PORT}`));
