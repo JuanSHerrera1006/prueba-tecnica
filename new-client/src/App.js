@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
     const [inputValue, setInputValue] = useState("");
@@ -8,19 +9,19 @@ function App() {
     };
 
     const onSubmitValue = (e) => {
-        alert(`Se ha registrado su dato: ${inputValue}`)
+        alert(`Se ha registrado su dato: ${inputValue}`);
+        axios.post("http://localhost:3000/", { inputValue });
         e.preventDefault();
-        fetch('', {
-            method: 'POST',
-            body: JSON.stringify(inputValue)
-        }).then((response) => console.log(response));
-        
-    }
+    };
     return (
         <div className="App">
             <h1>Prueba Tecnica</h1>
             <form onSubmit={(e) => onSubmitValue(e)}>
-                <input type="text" onChange={(e) => onChangeInput(e)} value={inputValue} />
+                <input
+                    type="text"
+                    onChange={(e) => onChangeInput(e)}
+                    value={inputValue}
+                />
                 <button type="Submit">Submit</button>
             </form>
         </div>
