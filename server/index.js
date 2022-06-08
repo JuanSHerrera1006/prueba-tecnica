@@ -11,6 +11,7 @@ app.use(cors());
 
 app.post("/", (req, res) => {
     const { inputValue } = req.body;
+    console.log(inputValue)
     res.json({ inputValue });
 });
 
