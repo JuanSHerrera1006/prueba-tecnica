@@ -10,7 +10,7 @@ function App() {
 
     const onSubmitValue = (e) => {
         alert(`Se ha registrado su dato: ${inputValue}`);
-        axios.post("http://localhost:3000/", { inputValue });
+        axios.post("http://localhost:5000/", { inputValue }).then(res => console.log(res));
         e.preventDefault();
     };
     return (
